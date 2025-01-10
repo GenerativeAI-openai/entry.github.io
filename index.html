@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>엔트리의 역사</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        .container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 800px;
+            margin: 50px auto;
+            opacity: 1;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .hidden {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .card {
+            margin: 15px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .card:hover {
+            background: #e3f2fd;
+        }
+        .back-arrow {
+            font-size: 20px;
+            color: #007bff;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .back-arrow:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="main" class="container">
+        <h1>엔트리의 역사</h1>
+        <div class="card" onclick="showDetails(0)">
+            <strong>2013/01/01</strong> - 엔트리 프로젝트 시작
+        </div>
+        <div class="card" onclick="showDetails(1)">
+            <strong>2014/07/15</strong> - 엔트리 정식 출시
+        </div>
+        <div class="card" onclick="showDetails(2)">
+            <strong>2015/03/10</strong> - 코딩 교육 자료 제공 시작
+        </div>
+        <div class="card" onclick="showDetails(3)">
+            <strong>2016/05/20</strong> - 모바일 버전 출시
+        </div>
+        <div class="card" onclick="showDetails(4)">
+            <strong>2017/08/01</strong> - 사용자 커뮤니티 활성화
+        </div>
+        <div class="card" onclick="showDetails(5)">
+            <strong>2018/11/30</strong> - 블록 코딩과 Python 통합
+        </div>
+        <div class="card" onclick="showDetails(6)">
+            <strong>2019/06/15</strong> - 국제 코딩 대회 개최
+        </div>
+        <div class="card" onclick="showDetails(7)">
+            <strong>2020/10/01</strong> - 온라인 수업 지원 업데이트
+        </div>
+        <div class="card" onclick="showDetails(8)">
+            <strong>2021/09/20</strong> - AI 교육 콘텐츠 추가
+        </div>
+        <div class="card" onclick="showDetails(9)">
+            <strong>2022/04/25</strong> - UI 및 기능 대규모 개선
+        </div>
+        <div class="card" onclick="showDetails(10)">
+            <strong>2024/12/10</strong> - 엔트리 10주년 기념 업데이트
+        </div>
+        <footer>© 2025 엔트리 히스토리</footer>
+    </div>
+
+    <div id="details" class="container hidden">
+        <span class="back-arrow" onclick="goBack()">← 뒤로가기</span>
+        <h1 id="details-title"></h1>
+        <p id="details-content"></p>
+    </div>
+
+    <script>
+        const historyData = [
+            {
+                title: "2013/01/01 - 엔트리 프로젝트 시작",
+                content: "2013년 1월 1일, 엔트리 프로젝트가 시작되었습니다."
+            },
+            {
+                title: "2014/07/15 - 엔트리 정식 출시",
+                content: "2014년 7월 15일, 엔트리가 정식으로 출시되었습니다."
+            },
+            {
+                title: "2015/03/10 - 코딩 교육 자료 제공 시작",
+                content: "2015년 3월 10일, 코딩 교육 자료가 처음으로 제공되었습니다."
+            },
+            {
+                title: "2016/05/20 - 모바일 버전 출시",
+                content: "2016년 5월 20일, 엔트리 모바일 버전이 출시되었습니다."
+            },
+            {
+                title: "2017/08/01 - 사용자 커뮤니티 활성화",
+                content: "2017년 8월 1일, 사용자 커뮤니티가 활성화되었습니다."
+            },
+            {
+                title: "2018/11/30 - 블록 코딩과 Python 통합",
+                content: "2018년 11월 30일, 블록 코딩과 Python이 통합되었습니다."
+            },
+            {
+                title: "2019/06/15 - 국제 코딩 대회 개최",
+                content: "2019년 6월 15일, 국제 코딩 대회가 개최되었습니다."
+            },
+            {
+                title: "2020/10/01 - 온라인 수업 지원 업데이트",
+                content: "2020년 10월 1일, 온라인 수업 지원 업데이트가 진행되었습니다."
+            },
+            {
+                title: "2021/09/20 - AI 교육 콘텐츠 추가",
+                content: "2021년 9월 20일, AI 교육 콘텐츠가 추가되었습니다."
+            },
+            {
+                title: "2022/04/25 - UI 및 기능 대규모 개선",
+                content: "2022년 4월 25일, UI 및 기능이 대규모로 개선되었습니다."
+            },
+            {
+                title: "2024/12/10 - 엔트리 10주년 기념 업데이트",
+                content: "2024년 12월 10일, 엔트리의 10주년을 기념하는 업데이트가 이루어졌습니다."
+            }
+        ];
+
+        const mainContainer = document.getElementById('main');
+        const detailsContainer = document.getElementById('details');
+        const detailsTitle = document.getElementById('details-title');
+        const detailsContent = document.getElementById('details-content');
+
+        function showDetails(index) {
+            const data = historyData[index];
+            detailsTitle.textContent = data.title;
+            detailsContent.textContent = data.content;
+
+            mainContainer.classList.add('hidden');
+            setTimeout(() => {
+                mainContainer.style.display = 'none';
+                detailsContainer.style.display = 'block';
+                setTimeout(() => {
+                    detailsContainer.classList.remove('hidden');
+                }, 50);
+            }, 500);
+        }
+
+        function goBack() {
+            detailsContainer.classList.add('hidden');
+            setTimeout(() => {
+                detailsContainer.style.display = 'none';
+                mainContainer.style.display = 'block';
+                setTimeout(() => {
+                    mainContainer.classList.remove('hidden');
+                }, 50);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
